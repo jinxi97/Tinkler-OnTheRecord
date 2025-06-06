@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package metrics;
+package ai.tinkler.on_the_record_001;
 
 import "google/protobuf/timestamp.proto";
 
