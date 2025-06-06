@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "grpc-tools": "^1.13.0",
+    "ts-proto": "^2.7.2"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "grpc_tools_node_protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./generated --ts_proto_opt=esModuleInterop=true --proto_path=./protos protos/metric.proto"
+  },
+  "keywords": [],
+  "author": ""
+}

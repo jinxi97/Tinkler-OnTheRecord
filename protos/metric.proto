@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package metrics;
+
+import "google/protobuf/timestamp.proto";
+
+enum InstrumentType {
+  INSTRUMENT_TYPE_UNSPECIFIED = 0;
+  GAUGE = 1;
+  COUNTER = 2;
+  HISTOGRAM = 3;
+}
+
+message Label {
+  string key = 1;
+  string value = 2;
+}
+
+message Gauge {
+  double value = 1;
+}
+
+message Counter {
+  int64 count = 1;
+}
+
+message Bucket {
+  double le = 1;
+  int64 count = 2;
+}
+
+message Histogram {
+  double sum = 1;
+  int64 count = 2;
+  repeated Bucket buckets = 3;
+}
+
+message Metric {
+  string name = 1;
+  google.protobuf.Timestamp timestamp = 2;
+
+  InstrumentType instrument_type = 3;
+
+  repeated Label labels = 4;
+
+  oneof payload {
+    Gauge gauge = 5;
+    Counter counter = 6;
+    Histogram histogram = 7;
+  }
+}
